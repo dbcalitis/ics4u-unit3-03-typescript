@@ -16,27 +16,34 @@ const prompt = promptSync()
  *
  * @param {number[]} nums array of numbers.
  * @param {number} target the given number.
+ * @param {number} lowIndex the lowest index.
+ * @param {number} highIndex the highest index.
  * @returns {number} the index.
  */
-function binarySearch(nums: number[], target: number): number {
-  let lowIndex: number = 0
-  let highIndex: number = nums.length - 1
-
-  while (lowIndex <= highIndex) {
-    const middle: number = Math.floor((lowIndex + highIndex) / 2)
-
-    if (nums[middle] === target) {
-      return middle
-    }
-
-    if (target < nums[middle]) {
-      highIndex = middle - 1
-    } else {
-      lowIndex = middle + 1
-    }
+function binarySearch(nums: number[], target: number,
+  lowIndex: number, highIndex: number): number {
+  // Base Condition
+  if (lowIndex > highIndex) {
+    return -1
   }
 
-  return -1
+  // Find the middle index
+  const middle = Math.floor((lowIndex + highIndex) / 2)
+
+  // Compare mid with given key x
+  if (nums[middle] === target) {
+    return middle
+  }
+
+  // If element at mid is greater than x,
+  // search in the left half of mid
+  if (nums[middle] > target) {
+    return binarySearch(nums, target, lowIndex, middle - 1)
+  } else {
+    // If element at mid is smaller than x,
+    // search in the right half of mid
+    return binarySearch(nums, target, middle + 1, highIndex)
+  }
 }
 
 const MIN = 1
@@ -46,10 +53,10 @@ const ARRAY_SIZE = 250
 const randomNumberArray = new Array(ARRAY_SIZE)
 
 for (let counter = 0; counter < randomNumberArray.length; counter++) {
-  randomNumberArray[counter] = Math.round(Math.random() * MAX + MIN)
+  randomNumberArray[counter] = Math.floor(Math.random() * MAX + MIN)
 }
 
-randomNumberArray.sort(function (a, b) {
+randomNumberArray.sort(function(a, b) {
   return a - b
 })
 
@@ -72,7 +79,8 @@ const numInput = Number(
 
 // Process and Output
 console.log(
-  `Your number is in index: ${binarySearch(randomNumberArray, numInput)}`
+  `Your number is in index: ${binarySearch(
+randomNumberArray, numInput, 0, ARRAY_SIZE - 1)}`
 )
 
 console.log('\nDone.')
