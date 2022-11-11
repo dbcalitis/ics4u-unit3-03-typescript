@@ -19,20 +19,20 @@ const prompt = promptSync()
  * @returns {number} the index.
  */
 function binarySearch(nums: number[], target: number): number {
-  let left: number = 0
-  let right: number = nums.length - 1
+  let lowIndex: number = 0
+  let highIndex: number = nums.length - 1
 
-  while (left <= right) {
-    const middle: number = Math.floor((left + right) / 2)
+  while (lowIndex <= highIndex) {
+    const middle: number = Math.floor((lowIndex + highIndex) / 2)
 
     if (nums[middle] === target) {
       return middle
     }
 
     if (target < nums[middle]) {
-      right = middle - 1
+      highIndex = middle - 1
     } else {
-      left = middle + 1
+      lowIndex = middle + 1
     }
   }
 
