@@ -20,8 +20,12 @@ const prompt = promptSync()
  * @param {number} highIndex the highest index.
  * @returns {number} the index.
  */
-function binarySearch(nums: number[], target: number,
-  lowIndex: number, highIndex: number): number {
+function binarySearch(
+  nums: number[],
+  target: number,
+  lowIndex: number,
+  highIndex: number
+): number {
   // Base Condition
   if (lowIndex > highIndex) {
     return -1
@@ -56,7 +60,7 @@ for (let counter = 0; counter < randomNumberArray.length; counter++) {
   randomNumberArray[counter] = Math.floor(Math.random() * MAX + MIN)
 }
 
-randomNumberArray.sort(function(a, b) {
+randomNumberArray.sort(function (a, b) {
   return a - b
 })
 
@@ -80,7 +84,11 @@ const numInput = Number(
 // Process and Output
 console.log(
   `Your number is in index: ${binarySearch(
-randomNumberArray, numInput, 0, ARRAY_SIZE - 1)}`
+    randomNumberArray,
+    numInput,
+    0,
+    ARRAY_SIZE - 1
+  )}`
 )
 
 console.log('\nDone.')
