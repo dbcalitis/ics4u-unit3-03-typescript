@@ -1,9 +1,10 @@
 /**
- * The program gives the factorial of the given number.
+ * The program gives the index of the given numbers
+ * in the randomly generated array.
  *
  * By:      Daria Bernice Calitis
  * Version: 1.0
- * Since:   2022-11-09
+ * Since:   2022-11-10
  */
 
 import promptSync from 'prompt-sync'
