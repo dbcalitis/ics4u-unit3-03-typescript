@@ -44,12 +44,13 @@ const ARRAY_SIZE = 250
 
 const randomNumberArray = new Array(ARRAY_SIZE)
 
-for (let counter = 0; counter < randomNumberArray.length;
-  counter++) {
-  randomNumberArray[counter] = Math.round((Math.random() * MAX) + MIN)
+for (let counter = 0; counter < randomNumberArray.length; counter++) {
+  randomNumberArray[counter] = Math.round(Math.random() * MAX + MIN)
 }
 
-randomNumberArray.sort(function(a, b) { return a - b })
+randomNumberArray.sort(function (a, b) {
+  return a - b
+})
 
 // Input
 console.log('Binary Search Program')
@@ -62,12 +63,15 @@ for (let counter = 0; counter < randomNumberArray.length; counter++) {
 
 console.log('\n')
 
-const numInput = Number(prompt(
-  'What number are you searching for in the array (integer between 0 and 999): '
-))
+const numInput = Number(
+  prompt(
+    'What number are you searching for in the array (integer between 0 and 999): '
+  )
+)
 
 // Process and Output
-console.log(`Your number is in index: ${
-binarySearch(randomNumberArray, numInput)}`)
+console.log(
+  `Your number is in index: ${binarySearch(randomNumberArray, numInput)}`
+)
 
 console.log('\nDone.')
